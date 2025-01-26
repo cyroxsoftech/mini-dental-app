@@ -1,0 +1,28 @@
+.page {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.page-content {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	justify-content: center;
+	min-height: 100%;
+	margin: .75rem 0;
+}
+
+.bg-indigo {
+	background-color: #5323a7 !important;
+}
+
+.h-100vh {
+	height: 100vh !important;
+}
