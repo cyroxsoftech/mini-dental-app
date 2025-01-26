@@ -16,7 +16,7 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             if (tenancy()->initialized) {
-                return route('tenant.login', tenant('id'));
+                return route('clinic.login', clinic('id'));
             }
             return route('login');
         }

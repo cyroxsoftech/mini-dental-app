@@ -33,6 +33,6 @@ class CentralController extends Controller
             $validated['clinicId'] = (int) $validated['clinicId'];
         }
 
-        return redirect()->route('tenant.login', $validated['clinicId']);
+        return redirect()->route('clinic.login', $validated['clinicId']);
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-
+use App\Concerns\HasRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Dentist extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRole;
 
     /**
      * The attributes that are mass assignable.

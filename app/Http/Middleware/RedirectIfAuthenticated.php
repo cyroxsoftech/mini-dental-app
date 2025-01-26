@@ -22,11 +22,12 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if ($guard == config('fortify.guard')) {
+                if ($guard == config('fortify.central-guard')) {
                     return redirect()->route('home');
-                } else {
-                    return redirect()->route('tenant.home', tenant('id'));
+                } else if(tenancy()->initialized) {
+                    return redirect()->route('clinic.home', clinic('id'));
                 }
+
             }
         }
 

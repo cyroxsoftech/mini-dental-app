@@ -52,28 +52,32 @@ class FortifyServiceProvider extends ServiceProvider
     public static function registerViewResponseBindings()
     {
         Fortify::loginView(function (Request $request) {
-            if ($request->route()->named('tenant.login')) {
-                return view('auth.login');
+            if ($request->route()->named('clinic.login')) {
+                $role = $request->query('role', '');
+                return view('auth.login', [
+                    'role' => $role,
+                ]);
+
             }
             return view('central.auth.login');
         });
 
         Fortify::registerView(function (Request $request) {
-            if ($request->route()->named('tenant.register')) {
+            if ($request->route()->named('clinic.register')) {
                 return view('auth.register');
             }
-            return view('central.auth.register');            
+            return view('central.auth.register');
         });
 
         Fortify::requestPasswordResetLinkView(function (Request $request) {
-            if ($request->route()->named('tenant.password.request')) {
+            if ($request->route()->named('clinic.password.request')) {
                 return view('auth.password.email');
             }
             return view('central.auth.password.email');
         });
 
         Fortify::resetPasswordView(function (Request $request) {
-            if ($request->route()->named('tenant.password.reset')) {
+            if ($request->route()->named('clinic.password.reset')) {
                 return view('auth.password.reset', [
                     'token' => $request->route('token'),
                     'email' => $request->query('email'),
@@ -87,14 +91,14 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::verifyEmailView(function (Request $request) {
-            if ($request->route()->named('tenant.verification.notice')) {
+            if ($request->route()->named('clinic.verification.notice')) {
                 return view('auth.verify');
             }
             return view('central.auth.verify');
         });
 
         Fortify::confirmPasswordView(function (Request $request) {
-            if ($request->route()->named('tenant.password.confirm-request')) {
+            if ($request->route()->named('clinic.password.confirm-request')) {
                 return view('auth.password.confirm');
             }
             return view('central.auth.password.confirm');
