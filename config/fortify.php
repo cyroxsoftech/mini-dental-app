@@ -16,7 +16,7 @@ return [
     */
 
     'guard' => 'web',
-
+    'central-guard' => 'admin',
     /*
     |--------------------------------------------------------------------------
     | Fortify Password Broker
