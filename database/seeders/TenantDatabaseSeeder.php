@@ -7,6 +7,7 @@ use App\Models\Dentist;
 use App\Models\Patient;
 use App\Models\Treatment;
 use App\Models\TreatmentPlan;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,6 +18,12 @@ class TenantDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        if (User::count() == 0) {
+            foreach ($this->users() as $user) {
+                User::create($user);
+            }
+        }
+
         if (Dentist::count() == 0) {
             foreach ($this->dentists() as $dentist) {
                 Dentist::create($dentist);
@@ -42,6 +49,36 @@ class TenantDatabaseSeeder extends Seeder
         }
     }
 
+
+    protected function users()
+    {
+        return [
+            [
+                'name' => 'John Doe',
+                'email' => 'user@dentalcrm.intranet',
+                'password' => bcrypt('Pass123456'),
+                'email_verified_at' => gmdate('Y-m-d H:i:s'),
+            ]
+        ];
+    }
+
+    protected function dentists()
+    {
+        return [
+            [
+                'name' => 'Mehmet Sonmez',
+                'email' => 'dentist@dentalcrm.intranet',
+                'mobile' => '+90 2544 872 55 33',
+                'password' => bcrypt('Pass123456'),
+                'expertise' => 'Surgery',
+                'country' => 'Turkey',
+                'city' => 'Ankara',
+                'postal_code' => '06490',
+                'address' => 'Bahcelievler St. 123',
+                'email_verified_at' => gmdate('Y-m-d H:i:s'),
+            ]
+        ];
+    }
 
     protected function patients()
     {
@@ -86,24 +123,6 @@ class TenantDatabaseSeeder extends Seeder
                 'postal_code' => '3463',
                 'address' => 'Fatih St. 1234',
             ],
-        ];
-    }
-
-    protected function dentists()
-    {
-        return [
-            [
-                'name' => 'Mehmet Sonmez',
-                'email' => 'mehmet.sonmez@dentalcrm.intranet',
-                'mobile' => '+90 2544 872 55 33',
-                'password' => bcrypt('Pass123456'),
-                'expertise' => 'Surgery',
-                'country' => 'Turkey',
-                'city' => 'Ankara',
-                'postal_code' => '06490',
-                'address' => 'Bahcelievler St. 123',
-                'email_verified_at' => gmdate('Y-m-d H:i:s'),
-            ]
         ];
     }
 

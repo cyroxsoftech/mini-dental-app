@@ -22,18 +22,18 @@ class DatabaseSeeder extends Seeder
                 'email'          => 'admin@dentalcrm.intranet',
                 'password'       => bcrypt('Pass123456'),
                 'remember_token' => Str::random(60),
-                'email_verified_at' =>gmdate('Y-m-d H:i:s'),
+                'email_verified_at' => gmdate('Y-m-d H:i:s'),
             ]);
         }
 
-        if(Clinic::count() == 0){
+        if (Clinic::count() == 0) {
             Clinic::create([
-                'name' => 'Inter Dental Center',
-                'vat_number' => '111-111-111',
-                'website' => 'www.interdentalcenter.com',
-                'email' => 'info@interdentalcenter.com',
-                'phone' => '(+355) 42 23 40 40',
-                'location' => '8RH8+P65, Rruga e Durrësit, Tiranë, Albania'
+                'name' => 'Lema Dental Clinic Istanbul',
+                'vat_number' => '1111-1111',
+                'website' => 'https://lemaclinic.com/',
+                'email' => 'contact@lemaclinic.com',
+                'phone' => '+90 542 107 1632',
+                'location' => 'Başakşehir, İshakpaşa Sokağı, 34480 Başakşehir/İstanbul'
             ]);
         }
     }
