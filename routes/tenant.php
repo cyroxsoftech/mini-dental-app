@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
-use Laravel\Fortify\Http\Controllers\ConfirmablePasswordController;
-use Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\Password\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\Password\ConfirmedPasswordStatusController;
 use Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController;
 use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
-use Laravel\Fortify\Http\Controllers\NewPasswordController;
-use Laravel\Fortify\Http\Controllers\PasswordController;
-use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
+use App\Http\Controllers\Auth\Password\NewPasswordController;
+use App\Http\Controllers\Auth\Password\PasswordController;
+use App\Http\Controllers\Auth\Password\PasswordResetLinkController;
 use Laravel\Fortify\Http\Controllers\ProfileInformationController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\VerifyEmailController;
@@ -133,6 +134,4 @@ Route::post(RoutePath::for('password.confirm', '/user/confirm-password'), [Confi
     ->name('password.confirm.store');
 
 
-Route::get('dashboard', function () {
-    return view('home');
-})->name('home');
+Route::get('dashboard', [AccountController::class, 'index'])->name('home');
