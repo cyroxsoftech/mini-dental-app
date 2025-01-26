@@ -13,12 +13,12 @@ class RoleSelector extends Component
 
     public $guards = [
         'user' => 'web',
-        //'dentist' => 'dentist',
+        'dentist' => 'dentist',
     ];
 
     public $roles = [
         'web' => 'User',
-       // 'dentist' => 'Dentist',
+        'dentist' => 'Dentist',
     ];
 
     /**
