@@ -6,7 +6,7 @@
     <meta name="author" content="">
 
     <title>{{ config('app.name') }} - {{ $title }}</title>
-
+    <link rel="icon" href="{{ url('/favicon.png') }}" type="image/png" />
     <!-- Custom fonts for this template-->
     <link href="/fonts/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -14,5 +14,6 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/css/theme.min.css" rel="stylesheet">
+    <link href="/css/theme.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
 </head>

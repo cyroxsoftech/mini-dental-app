@@ -18,20 +18,20 @@
                                 </div>
                                 <form class="user">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
+                                        <input type="email" class="form-control "
                                             id="exampleInputEmail" aria-describedby="emailHelp"
                                             placeholder="Enter Email Address...">
                                     </div>
-                                    <a href="javascript:;" class="btn btn-primary btn-user btn-block">
+                                    <a href="javascript:;" class="btn btn-primary btn-block">
                                         Reset Password
                                     </a>
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('tenant.register', tenant('id')) }}">Create an Account!</a>
+                                    <a class="small" href="{{ route('clinic.register', clinic('id')) }}">Create an Account!</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('tenant.login', tenant('id')) }}">Already have an account? Login!</a>
+                                    <a class="small" href="{{ route('clinic.login', clinic('id')) }}">Already have an account? Login!</a>
                                 </div>
                             </div>
                         </div>

@@ -14,34 +14,92 @@
                                 <div class="text-center">
                                     <h1 class="mb-4 text-gray-900 h4">{{ tenant('name') }}</h1>
                                 </div>
-                                <form class="user">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Email Address">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">
-                                                Remember Me
-                                            </label>
+                                <form method="post" action="{{ route('clinic.login.store', clinic('id')) }}">
+                                    @csrf
+                                    <div class="mt-5 row">
+                                        <div class="mx-auto col-12 d-block">
+                                            @if (session('success'))
+                                                <x-alert type="success">
+                                                    {{ __(session('success')) }}
+                                                </x-alert>
+                                            @endif
+                                            <div class="mb-4 form-group">
+                                                <x-role-selector name="role"  :selectedRole="$role"/>
+                                            </div>
+                                            @error('role')
+                                                <span class="d-block alert alert-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            <div class="mb-4 input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
+                                                </div>
+                                                <input name="email" type="email"
+                                                    class="form-control text-dark @error('email') is-invalid @enderror"
+                                                    placeholder="Email Address"
+                                                    value="{{ old('email') }}" required>
+                                            </div>
+                                            @error('email')
+                                                <span class="d-block alert alert-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            <div class="mb-4 input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="fa fa-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <input name="password" type="password"
+                                                    class="form-control text-dark @error('password') is-invalid @enderror"
+                                                    placeholder="Password" required>
+                                            </div>
+                                            @error('password')
+                                                <span class="d-block alert alert-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+            
+                                            <div class="flex-row row d-flex justify-content-between align-items-center">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input name="remember" type="checkbox" value="1"
+                                                                class="custom-control-input" />
+                                                            <span class="custom-control-label text-gray-dark">
+                                                                <span class="ml-1">{{ __('Remember me') }}</span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+            
+                                            <div class="mt-3 row">
+                                                <div class="col-12">
+                                                    <button type="submit" class="px-4 btn btn-primary btn-block">
+                                                        {{ __('Login') }}
+                                                    </button>
+                                                </div>
+                                                <div class="text-center col-12">
+                                                    <a href="{{ route('clinic.password.request', clinic('id')) }}"
+                                                        class="px-0 btn btn-link box-shadow-0 text-gray-dark">
+                                                        {{ __('Forgot password?') }}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                        Login
-                                    </a>
                                 </form>
+            
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('tenant.password.request', tenant('id')) }}">Forgot Password?</a>
+                                    <a class="small" href="{{ route('clinic.password.request', clinic('id')) }}">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('tenant.register', tenant('id')) }}">Create an Account!</a>
+                                    <a class="small" href="{{ route('clinic.register', clinic('id')) }}">Create an Account!</a>
                                 </div>
                             </div>
                         </div>

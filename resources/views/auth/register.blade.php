@@ -12,34 +12,34 @@
                         <form class="user">
                             <div class="form-group row">
                                 <div class="mb-3 col-sm-12 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    <input type="text" class="form-control " id="exampleFirstName"
                                         placeholder="Full Name">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                <input type="email" class="form-control " id="exampleInputEmail"
                                     placeholder="Email Address">
                             </div>
                             <div class="form-group row">
                                 <div class="mb-3 col-sm-6 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user"
+                                    <input type="password" class="form-control "
                                         id="exampleInputPassword" placeholder="Password">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user"
+                                    <input type="password" class="form-control "
                                         id="exampleRepeatPassword" placeholder="Repeat Password">
                                 </div>
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block">
+                            <a href="javascript:;" class="btn btn-primary btn-block">
                                 Register Account
                             </a>
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small" href="{{ route('tenant.password.request', tenant('id')) }}">Forgot Password?</a>
+                            <a class="small" href="{{ route('clinic.password.request', clinic('id')) }}">Forgot Password?</a>
                         </div>
                         <div class="text-center">
-                            <a class="small" href="{{ route('tenant.login', tenant('id')) }}">Already have an account? Login!</a>
+                            <a class="small" href="{{ route('clinic.login', clinic('id')) }}">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>
