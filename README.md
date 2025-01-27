@@ -1,66 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://cyroxsoftech.com" target="_blank"><img src="https://raw.githubusercontent.com/cyroxsoftech/mini-dental-app/refs/heads/main/public/img/screenshots/access-clinic-portal.png" width="400" alt="Clinic App"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Introduction
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Hello, and welcome to you dear Web Developer!
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This repository, which is a mini version of the project you will work on, serves as playground for you to pratically test your skills.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Before getting started, please hit the `Use this template` button to create a new repository on which you commit and push your code regularly for your tasks. Once you are done, please mail us the link to your repository.
 
-## Learning Laravel
+If you encounter a problem or have any questions, feel free to send an email to [trabdlkarim@cyroxsoftech.com](mailto:trabdlkarim@cyroxsoftech.com)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Prerequisites
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+The already built up code frame in this repo is a very basic dental app with limited functionalities. Your task is to pick it up and develop new features on top of it. You cannot change the existing code structure however you can add any external or third party packages if needed.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Before running this project, make sure have these installed on your local machine:
 
-## Laravel Sponsors
+- PHP 8.2+
+- MySQL 8.0+
+- Composer 2.7+
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Task 1: Setup and Installation
 
-### Premium Partners
+Your first task is to clone this repository, set the project up, and run it project on your local machine. Follow these steps to complete the task:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+**Step 0**: Create a new MySQL database
 
-## Contributing
+You should know that this project is a multitenant application. It uses [stancl/tenancy](https://tenancyforlaravel.com/) Laravel package to be tenant aware. As such, you need first to create a MySQL user with the right privileges to create multiple databases. Secondly, create a new database belonging to the newly created user. That database will serve as the app central database.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Once you are done with the user and database creation, update the `.env` file located at the root directory of the project. If the file does'nt exist, create one from `.env.example` file.
 
-## Code of Conduct
+The env variables to be updated are:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```yaml
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=<YOUR_DATABASE_NAME>
+DB_USERNAME=<YOUR_DATABASE_USER> # Must be a user who can create multiple databases.
+DB_PASSWORD=<YOUR_DATABASE_PASSWORD>
+```
 
-## Security Vulnerabilities
+Now open the project root directory in the terminal, and continue to the next step to run the commands.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Step 1**: Install dependencies with composer
 
-## License
+```shell
+composer install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Step 2**: Run migrations
+
+```shell
+php artisan migrate
+```
+
+**Step 3**: Seed the database
+
+```shell
+php artisan db:seed
+```
+
+**Step 4**: Run the app
+
+```shell
+php artisan serve
+```
+
+Now visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to check that everything is working just fine.
+
+## Task 2: Add A New Auth Guard For Dentists
+
+Navigate to [http://127.0.0.1:8000/portal/clinics/1/login](http://127.0.0.1:8000/portal/clinics/1/login)
+
+<img src="https://raw.githubusercontent.com/cyroxsoftech/mini-dental-app/refs/heads/main/public/img/screenshots/clinic-login.png" width="400" alt="Clinic App">
+
+Try to login by selecting the `User` role and using the user credentials below:
+
+```text
+E-mail: user@dentalcrm.intranet
+Password: Pass123456
+```
+
+You should be able to log in successfully.
+
+Now after logging out, try to log in again but this time select the `Dentist` role and use the dentist credentials below:
+
+```text
+E-mail: dentist@dentalcrm.intranet
+Password: Pass123456
+```
+
+As you can see, currently it's impossible to log in as a dentist. This is your second task. It consists of resolving this issue to allow dentists to authenticate themselves. To do so, you need to add a new authentication guard for dentists.
+
+## Task 3: Implement A New Route
+
+Congratulations, you succeeded the previous step! Now you are able to log in as a `Dentist`. But if you click on the `Patients` link on the right sidebar, you notice it does not work.
+
+<img src="https://raw.githubusercontent.com/cyroxsoftech/mini-dental-app/refs/heads/main/public/img/screenshots/dentist-dashboard.png" width="400" alt="Clinic App">
+
+So, your task is to make it works. After clicking, it should list the currently logged in dentist patients in a table.
+
+For that, you'll need to implement a new route action called `getPatients()` in `App\Http\Controllers\Account\DentistController` controller that will be responsible of listing the authenticated dentist patients. Then register your new route in `routes/tenant.php` file, and dont forget to give it a name.
+
+Finally, update the `Patients` link with the new route in `resources/views/partials/sidebar.blade.php` file.
+
+If your implementation is right, after clicking on the `Patients` link, a new page should appear with a list of patients.
