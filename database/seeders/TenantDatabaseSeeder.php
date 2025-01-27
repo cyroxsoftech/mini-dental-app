@@ -278,7 +278,7 @@ class TenantDatabaseSeeder extends Seeder
             [
                 'name' => 'Treatment Plan 2 for patient #2',
                 'dentist_id' => 1,
-                'patient_id' => 3,
+                'patient_id' => 2,
                 'start_date' => '2025-01-20',
                 'end_date' => '2024-01-31',
                 'notes' => 'Some treatment plan notes goes here',

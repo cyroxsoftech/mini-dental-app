@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Account\DashboardController;
+use App\Http\Controllers\Account\DentistController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -134,4 +135,5 @@ Route::post(RoutePath::for('password.confirm', '/user/confirm-password'), [Confi
     ->name('password.confirm.store');
 
 
-Route::get('dashboard', [AccountController::class, 'index'])->name('home');
+Route::get('dashboard', [DashboardController::class, 'index'])->name('home');
+Route::get('diagnosis/treatment-plans', [DentistController::class, 'getTreatmentPlans'])->name('dentist.plans.index');

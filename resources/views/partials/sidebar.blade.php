@@ -22,16 +22,7 @@
 
     @if (principal()->isUser())
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('clinic.home', clinic('id')) }}">
-                <i class="fas fa-fw fa-users"></i>
-                <span>Users</span>
-            </a>
-        </li>
-
-        <hr class="my-0 sidebar-divider">
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('clinic.home', clinic('id')) }}">
+            <a class="nav-link" href="javascript:;">
                 <i class="fas fa-fw fa-user-md"></i>
                 <span>Dentists</span>
             </a>
@@ -40,7 +31,7 @@
         <hr class="my-0 sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('clinic.home', clinic('id')) }}">
+            <a class="nav-link" href="javascript:;">
                 <i class="fas fa-fw fa-heartbeat"></i>
                 <span>Patients</span>
             </a>
@@ -49,7 +40,7 @@
         <hr class="my-0 sidebar-divider">
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('clinic.home', clinic('id')) }}">
+            <a class="nav-link" href="javascript:;">
                 <i class="fas fa-fw fa-user-md"></i>
                 <span>Treatments</span>
             </a>
@@ -58,14 +49,14 @@
         <hr class="my-0 sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('clinic.home', clinic('id')) }}">
+            <a class="nav-link" href="javascript:;">
                 <i class="fas fa-fw fa-stethoscope"></i>
                 <span>Treatment Plans</span>
             </a>
         </li>
     @elseif(principal()->isDentist())
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('clinic.home', clinic('id')) }}">
+            <a class="nav-link" href="javascript:;">
                 <i class="fas fa-fw fa-heartbeat"></i>
                 <span>Patients</span>
             </a>
@@ -74,7 +65,7 @@
         <hr class="my-0 sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('clinic.home', clinic('id')) }}">
+            <a class="nav-link" href="{{ route('clinic.dentist.plans.index', clinic('id')) }}">
                 <i class="fas fa-fw fa-stethoscope"></i>
                 <span>Treatment Plans</span>
             </a>
