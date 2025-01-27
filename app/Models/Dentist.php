@@ -51,4 +51,8 @@ class Dentist extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function treatmentPlans(){
+        return $this->hasMany(TreatmentPlan::class, 'dentist_id', 'id');
+    }
 }
